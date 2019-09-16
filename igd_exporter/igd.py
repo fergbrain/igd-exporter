@@ -26,6 +26,7 @@ igd_metrics = {
           'TotalBytesSent': Metric(name='igd_common_sent_bytes', desc='Bytes sent by all connections'),
     'TotalPacketsReceived': Metric(name='igd_common_received_packets_total', desc='Packets received by all connections'),
         'TotalPacketsSent': Metric(name='igd_common_sent_packets_total', desc='Packets sent by all connections'),
+    'GetCommonLinkProperties': Metric(name='igd_common_common_link_properties', desc='Physical link properties of the WAN interface'),
 }
 
 ns = {
