@@ -179,6 +179,10 @@ def probe_device(target_url):
     if url_base is None:
         url_base = target_url
     device = st.find("d:device[d:deviceType='urn:schemas-upnp-org:device:InternetGatewayDevice:1']/d:deviceList/d:device[d:deviceType='urn:schemas-upnp-org:device:WANDevice:1']", ns)
+    
+    if Device is None:
+        device = st.find("d:device[d:deviceType='urn:schemas-upnp-org:device:InternetGatewayDevice:2']/d:deviceList/d:device[d:deviceType='urn:schemas-upnp-org:device:WANDevice:2']", ns)
+    
     url_path = device.findtext("d:serviceList/d:service[d:serviceType='urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1']/d:controlURL", namespaces=ns)
 
     return Device(device.findtext('d:UDN', namespaces=ns), urllib.parse.urljoin(url_base, url_path))
