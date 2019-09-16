@@ -11,7 +11,7 @@ Running
 -------
 
 ```
-$ python3 -m pip install git+https://github.com/yrro/igd-exporter.git
+$ python3 -m pip install git+https://github.com/fergbrain/igd-exporter/igd-exporter.git
 $ igd-exporter
 ```
 
