@@ -9,7 +9,7 @@ import urllib.request
 import urllib.parse
 import wsgiref.headers
 
-import prometheus_client
+from prometheus_client.core import CounterMetricFamily
 
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element as E, SubElement as sE, ElementTree as ET, QName
@@ -158,7 +158,7 @@ class Collector:
     def collect(self):
         with concurrent.futures.ThreadPoolExecutor(4) as ex:
             for metric, value in ex.map(lambda kv: (kv[1], probe_metric(self.__device.url, kv[0])), igd_metrics.items()):
-                g = prometheus_client.core.CounterMetricFamily(metric.name, metric.desc, labels=['udn'])
+                g = CounterMetricFamily(metric.name, metric.desc, labels=['udn'])
                 if value < 0:
                     # WANCommonInterfaceConfig:1 specifies these values with the
                     # 'ui4' data type. Assume any negative values are caused by the
