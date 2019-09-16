@@ -180,7 +180,7 @@ def probe_device(target_url):
         url_base = target_url
     device = st.find("d:device[d:deviceType='urn:schemas-upnp-org:device:InternetGatewayDevice:1']/d:deviceList/d:device[d:deviceType='urn:schemas-upnp-org:device:WANDevice:1']", ns)
     
-    if Device is None:
+    if device is None:
         device = st.find("d:device[d:deviceType='urn:schemas-upnp-org:device:InternetGatewayDevice:2']/d:deviceList/d:device[d:deviceType='urn:schemas-upnp-org:device:WANDevice:2']", ns)
     
     url_path = device.findtext("d:serviceList/d:service[d:serviceType='urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1']/d:controlURL", namespaces=ns)
